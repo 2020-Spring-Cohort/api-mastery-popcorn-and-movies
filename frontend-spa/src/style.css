@@ -1,0 +1,29 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.homepage_menu ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 50px;
+    background-color: rgb(39, 238, 238);
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.genre_section {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+
