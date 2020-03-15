@@ -46,4 +46,12 @@ public class Genre {
     public int hashCode() {
         return Objects.hash(getId(), getGenreType());
     }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", genreType='" + genreType + '\'' +
+                '}';
+    }
 }

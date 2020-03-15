@@ -2,17 +2,22 @@ package org.wcci.apimastery;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
+import javax.persistence.*;
+import java.util.*;
+
+import static java.util.Arrays.asList;
 
 @Entity
 public class Movie {
+
     private String title;
-    private String directors;
-    private Long date;
+//    private String directors;
+//    private Long date;
     @Id
     @GeneratedValue
     private Long id;
@@ -21,26 +26,50 @@ public class Movie {
     @ManyToOne
     private Genre genre;
 
-    protected Movie() {}
-    public Movie(String title, Genre genre) {
+
+    @ManyToMany
+    private Collection<Actor> actors;
+
+    protected Movie() {
+    }
+
+    public Movie(String title, Genre genre, Actor... actors) {
         this.title = title;
         this.genre = genre;
+        this.actors = new ArrayList<>(Arrays.asList(actors));
+    }
+
+    public Collection<Actor> getActors() {
+        return actors;
+    }
+
+    public Genre getGenre() {
+        return genre;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getDirectors() {
-        return directors;
-    }
-
-    public Long getDate() {
-        return date;
-    }
+//    public String getDirectors() {
+//        return directors;
+//    }
+//
+//    public Long getDate() {
+//        return date;
+//    }
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", id=" + id +
+                ", genre=" + genre +
+                '}';
     }
 
     @Override
@@ -48,13 +77,13 @@ public class Movie {
         if (this == o) return true;
         if (!(o instanceof Movie)) return false;
         Movie movie = (Movie) o;
-        return Objects.equals(getId(), movie.getId()) &&
-                Objects.equals(genre, movie.genre) &&
-                Objects.equals(getTitle(), movie.getTitle());
+        return getTitle().equals(movie.getTitle()) &&
+                getId().equals(movie.getId()) &&
+                getGenre().equals(movie.getGenre());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), genre, getTitle());
+        return Objects.hash(getTitle(), getId(), getGenre());
     }
 }
