@@ -16,7 +16,7 @@ public class Actor {
     private Collection<Movie>movies;
 
     private String name;
-   // private int age;
+    private int age;
 
     public Actor(){}
     public Actor(String name) {
@@ -28,9 +28,9 @@ public class Actor {
         return name;
     }
 
-//    public int getAge() {
-//        return age;
-//    }
+    public int getAge() {
+        return age;
+    }
     public Long getId() {
     return id;
 }

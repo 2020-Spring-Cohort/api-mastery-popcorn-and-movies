@@ -1,11 +1,11 @@
 package org.wcci.apimastery;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+        import org.junit.jupiter.api.Test;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+        import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import static org.assertj.core.api.Assertions.assertThat;
+        import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 public class JpaWiringTest {
@@ -54,7 +54,6 @@ public class JpaWiringTest {
         entityManager.flush();
         entityManager.clear();
 
-
         Movie retrievedMovie = movieRepo.findById(testMovie1.getId()).get();
         Actor retrievedActor1 = actorRepo.findById(testActor1.getId()).get();
         Actor retrievedActor2 = actorRepo.findById(testActor2.getId()).get();
@@ -63,5 +62,19 @@ public class JpaWiringTest {
         assertThat(retrievedActor2.getMovies()).contains(testMovie1, testMovie2);
 
     }
+    @Test
+    public void displaySingleMovieData() {
+        Genre testGenre = new Genre("comedy");
+        Actor testActor = new Actor("Bradley");
+        Movie testMovie = new Movie("Hangover",testGenre, testActor);
+        actorRepo.save(testActor);
+        genreRepo.save(testGenre);
+        movieRepo.save(testMovie);
+        testMovie.setDate("06/02/2009");
+        testMovie.setDirectors("Todd Phillips");
 
+        assertThat(testMovie.getDate()).isEqualTo("06/02/2009");
+        assertThat(testMovie.getDirectors()).isEqualTo("Todd Phillips");
+
+    }
 }

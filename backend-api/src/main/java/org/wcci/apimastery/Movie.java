@@ -16,8 +16,8 @@ import static java.util.Arrays.asList;
 public class Movie {
 
     private String title;
-//    private String directors;
-//    private Long date;
+    private String directors;
+    private String date;
     @Id
     @GeneratedValue
     private Long id;
@@ -51,17 +51,26 @@ public class Movie {
         return title;
     }
 
-//    public String getDirectors() {
-//        return directors;
-//    }
-//
-//    public Long getDate() {
-//        return date;
-//    }
+    public void setDirectors(String directors) {
+        this.directors = directors;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDirectors() {
+        return directors;
+    }
+
+    public String getDate() {
+        return date;
+    }
 
     public Long getId() {
         return id;
     }
+
 
     @Override
     public String toString() {
