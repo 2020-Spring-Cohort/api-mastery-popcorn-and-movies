@@ -75,6 +75,5 @@ public class JpaWiringTest {
 
         assertThat(testMovie.getDate()).isEqualTo("06/02/2009");
         assertThat(testMovie.getDirectors()).isEqualTo("Todd Phillips");
-
     }
 }
