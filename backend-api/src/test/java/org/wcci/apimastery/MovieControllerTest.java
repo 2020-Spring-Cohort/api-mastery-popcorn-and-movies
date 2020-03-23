@@ -18,7 +18,7 @@ public class MovieControllerTest {
 
 
     @Test
-    public void retreivedMovieReturnsAListOfMoviesFromMockRepo() {
+    public void retrievedMovieReturnsAListOfMoviesFromMockRepo() {
         movieRepository = mock(MovieRepository.class);
         Genre testGenre = new Genre("comedy");
         MovieController underTest = new MovieController(movieRepository);
