@@ -1,5 +1,7 @@
 package org.wcci.apimastery;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ public class Actor {
     @Id
     @GeneratedValue
     private Long id;
+
+    @JsonIgnore
     @ManyToMany(mappedBy = "actors")
     private Collection<Movie>movies;
 
@@ -21,6 +25,7 @@ public class Actor {
     public Actor(){}
     public Actor(String name) {
         this.name = name;
+
     }
 
     public String getName()
